@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="css/magnific-popup.css" />
 	<link rel="stylesheet" href="css/animate.css" />
 	<link rel="stylesheet" href="css/owl.carousel.css" />
-	<link rel="stylesheet" href="C:\Users\Rob\Desktop\Portfolio\html\node_modules\lity\dist\lity.css">
+	<link rel="stylesheet" href="css/lity.css">
 	<!--
 		Background Gradient
 	-->
@@ -186,26 +186,23 @@
 						<div class="typing-title">
 							<p>Full-Stack Software Developer</p>
 							<p>Educator</p>
-							<p>Web Designer</p>
 							<p>Musician</p>
-
 						</div>
 					</div>
 
 					<!-- profile socials -->
 					<div class="social">
-						<a target="_blank" href="https://dribbble.com/"><span class="fa fa-dribbble"></span></a>
 						<a target="_blank" href="https://twitter.com/robtuse87"><span class="fa fa-twitter"></span></a>
+						<a target="_blank" href="https://music.apple.com/profile/robtuse"><span class="fa fa-apple"></span></a>
+						<a target="_blank" href="https://www.instagram.com/robhack87/"><span class="fa fa-instagram"></span></a>
 						<a target="_blank" href="https://github.com/Robhack623"><span class="fa fa-github"></span></a>
-						<a target="_blank" href="https://www.spotify.com/"><span class="fa fa-spotify"></span></a>
-						<a target="_blank" href="https://stackoverflow.com/"><span
-								class="fa fa-stack-overflow"></span></a>
+						<a target="_blank" href="https://stackoverflow.com/users/20584373/rob-hackett"><span class="fa fa-stack-overflow"></span></a>
 					</div>
 
 					<!-- profile buttons -->
 					<div class="lnks">
-						<a href="#" class="lnk">
-							<span class="text">Download CV</span>
+						<a href="images\myimages\Hackett_Resume.docx.pdf" class="lnk" target="_blank" download>
+							<span class="text">Download Resume</span>
 						</a>
 						<a href="#" class="lnk discover">
 							<span class="text">Contact Me</span>
@@ -235,9 +232,12 @@
 							<div class="col col-d-6 col-t-6 col-m-12 border-line-v">
 								<div class="text-box">
 									<p>
-										My name is Rob Hackett. I am a budding web designer
-										in search of my first job in the field. I have 9 years of
-										experience in education at the middle school level.
+										I am a recently graduated web developer with experience in various frontend and backend frameworks.
+										My goal is to work as a full-time web developer with a reputable employer. I want to help people
+										accomplish their business goals with the skills I have learned as a fledgling web developer. I am excited to
+										learn any programming language necessary to help accomplish my goals and begin my career as aWeb
+										Developer.
+
 									</p>
 								</div>
 							</div>
@@ -282,7 +282,7 @@
 									<div class="desc">
 										<div>
 											<p><b>Frontend: </b> HTML/CSS/JS/React/Redux</p><br>
-											<p><b>Backend: </b><br> node.JS/PostgreSQL/</p>
+											<p><b>Backend: </b><br> Node.JS/PostgreSQL/</p>
 											<p>MongoDB/Mongoose</p>
 										</div>
 									</div>
@@ -407,7 +407,7 @@
 								<div class="revs-item">
 									<div class="text">
 										<div>
-											"Rob is literally the best person I've ever met."
+											"Rob is one of the most dedicated students I've helped teach at DigitalCrafts. I'm excited to see where his career endeavors take him!"
 										</div>
 									</div>
 									<div class="user">
@@ -508,7 +508,7 @@
 										<div class="name">Richland Community College</div>
 										<div class="company">Dallas, Texas</div>
 										<p>
-											Associates in Education
+											Associates in Music Performance
 										</p>
 									</div>
 								</div>
@@ -1248,8 +1248,8 @@
 						<div class="row">
 							<div class="col col-d-12 col-t-12 col-m-12 border-line-v">
 								<div class="contact_form">
-									<form id="cform" method="post">
-										<div class="row">
+									<form id="contact_form" >
+										<div class="row"><input type="hidden" name="contact_number">
 											<div class="col col-d-6 col-t-6 col-m-12">
 												<div class="group-val">
 													<input type="text" name="name" placeholder="Full Name" />
@@ -1267,15 +1267,14 @@
 											</div>
 										</div>
 										<div class="align-left">
-											<a href="#" class="button" onclick="$('#cform').submit(); return false;">
-												<span class="text">Send Message</span>
+												<button class="text" type="submit">Send Message</button>
 												<span class="arrow"></span>
 											</a>
 										</div>
 									</form>
-									<div class="alert-success">
+									<!-- <div class="alert-success">
 										<p>Thanks, your message is sent successfully.</p>
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -1399,7 +1398,34 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/typed.js"></script>
 	<script src="https://use.fontawesome.com/8da76d029b.js"></script>
-	<script src="C:\Users\Rob\Desktop\Portfolio\html\node_modules\lity\dist\lity.js"></script>
+	<script src="js/lity.js"></script>
+
+	<!--
+		EMAIL JS
+	-->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('uVwCGl5O4iBY6xmzN');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact_form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                emailjs.sendForm('service_ugpgi6z', 'template_c5o8ddr', this)
+                    .then(function() {
+                        alert('Form submitted successfully!');
+                    }, function(error) {
+                        alert('FAILED - Please resubmit', error);
+                    });
+            });
+        }
+    </script>
 
 	<!--
 		Google map api
