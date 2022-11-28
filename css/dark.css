@@ -349,7 +349,7 @@ textarea:focus:-ms-input-placeholder {
 .background.gradient {
 	background: #17171b !important;
 	background: -webkit-linear-gradient(top left, #17171b 0%, #28282f 100%) !important;
-	background: linear-gradient(to bottom right, #ffd900bb 0%, #2d2f28 100%) !important;
+	background: linear-gradient(to bottom right, #ff9800 0%, #2d2f28 100%) !important;
 }
 
 .bg-bubbles li {
